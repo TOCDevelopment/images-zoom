@@ -4,11 +4,11 @@
   box-sizing: border-box
 }
 .show{
-  width: 400px;
-  height: 400px;
+  width: 727px;
+  height: 267px;
 }
 .small-img{
-  width: 350px;
+  width: 630px;
   height: 70px;
   margin-top: 10px;
   position: relative;
@@ -33,7 +33,7 @@
   opacity: .5;
 }
 .small-container{
-  width: 310px;
+  width: 630px;
   height: 70px;
   overflow: hidden;
   position: absolute;
@@ -47,8 +47,8 @@
 }
 
 .small-container .show-small-img{
-  width: 70px;
-  height: 70px;
+  width: 153px;
+  height: 56px;
   margin-right: 6px;
   cursor: pointer;
   float: left;

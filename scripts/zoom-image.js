@@ -3,22 +3,22 @@
  */
 ;(function($) {
     /**
-     * 1, 缩略图大小和父容器大小一致
-     * 2, 父容器 href 属性为高清图片路径
+     * 1, The thumbnail size is the same as the parent container size
+     * 2, Parent container href attribute is the HD image path
      */
     $.fn.zoomImage = function(paras) {
         /**
-         * 默认参数
+         * Default parameter
          */
         var defaultParas = {
-            layerW: 100, // 遮罩宽度
-            layerH: 100, // 遮罩高度
-            layerOpacity: 0.2, // 遮罩透明度
-            layerBgc: '#000', // 遮罩背景颜色
-            showPanelW: 500, // 显示放大区域宽
-            showPanelH: 500, // 显示放大区域高
-            marginL: 5, // 放大区域离缩略图右侧距离
-            marginT: 0 // 放大区域离缩略图上侧距离
+            layerW: 100, // Mask width (overlay)
+            layerH: 100, // Mask height (overlay)
+            layerOpacity: 0.2, // Mask transparency (overlay)
+            layerBgc: '#000', // Mask background color (overlay)
+            showPanelW: 500, // Display magnified area width (magnifaction display area)
+            showPanelH: 500, // Display zoom area high (magnifaction display area)
+            marginL: 5, // Magnification area from the right side of the thumbnail
+            marginT: 0 // Zoom in area from the top side of the thumbnail
         };
 
         paras = $.extend({}, defaultParas, paras);
@@ -26,7 +26,7 @@
         $(this).each(function() {
             var self = $(this).css({position: 'relative'});
             var selfOffset = self.offset();
-            var imageW = self.width(); // 图片高度
+            var imageW = self.width(); // Picture height
             var imageH = self.height();
 
             self.find('img').css({
@@ -34,12 +34,12 @@
                 height: '100%'
             });
 
-            // 宽放大倍数
+            // Wide magnification
             var wTimes = paras.showPanelW / paras.layerW;
-            // 高放大倍数
+            // High magnification
             var hTimes = paras.showPanelH / paras.layerH;
 
-            // 放大图片
+            // Zoom in picture
             var img = $('<img>').attr('src', self.attr("href")).css({
                 position: 'absolute',
                 left: '0',
@@ -48,7 +48,7 @@
                 height: imageH * hTimes
             }).attr('id', 'big-img');
 
-            // 遮罩
+            // Mask
             var layer = $('<div>').css({
                 display: 'none',
                 position: 'absolute',
@@ -62,7 +62,7 @@
                 cursor: 'crosshair'
             });
 
-            // 放大区域
+            // Magnified area
             var showPanel = $('<div>').css({
                 display: 'none',
                 position: 'absolute',
@@ -76,7 +76,7 @@
             self.append(layer).append(showPanel);
 
             self.on('mousemove', function(e) {
-                // 鼠标相对于缩略图容器的坐标
+                // The coordinates of the mouse relative to the thumbnail container
                 var x = e.pageX - selfOffset.left;
                 var y = e.pageY - selfOffset.top;
 

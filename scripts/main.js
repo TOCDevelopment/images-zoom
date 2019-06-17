@@ -17,7 +17,7 @@ $('.show-small-img').click(function () {
     }
   }
 })
-// 点击 '>' 下一张
+// Click '>' Next
 $('#next-img').click(function (){
   $('#show-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
   $('#big-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
@@ -33,7 +33,7 @@ $('#next-img').click(function (){
     }
   }
 })
-// 点击 '<' 上一张
+// Click '<' Previous
 $('#prev-img').click(function (){
   $('#show-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
   $('#big-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
