@@ -12,6 +12,8 @@
 <div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
   <div class="show" href="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg">
     <img src="images/IMG_0001.jpg" id="show-img">
+	<div class="img-zoom-cover"></div>
+	<a class="visible-xs visible-sm" id="img-zoom-mobileView" onclick="mobileZoom();" style="position:absolute;top:0;bottom:0;left:0;right:0;z-index:10;"></a>
   </div>
   <div class="small-img">
     <img src="images/img-zoom-svg/chevron-left-regular.svg" class="icon-left" alt="" id="prev-img">
@@ -26,6 +28,13 @@
     <img src="images/img-zoom-svg/chevron-right-regular.svg" class="icon-right" alt="" id="next-img">
   </div>
 </div>
+</div>
+<div id="img-zoom-mobileViewer">
+	<p style="font-size: 3em;height:5vh;">Press and drag to move</p>
+	<div class="img-zoom-mobileViewContainer">
+		<img id="img-zoom-mobileViewImg" src="images/hres/IMG_0001.jpg"/>
+	</div>
+	<a style="font-size: 3em;" onclick="mobileZoomClose();" id="img-zoom-mobileViewerClose">Close</a>
 </div>
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/zoom-image.js"></script>

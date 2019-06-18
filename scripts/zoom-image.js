@@ -8,12 +8,6 @@ for this version I will assume all hires versions are the same size, if not then
 /* Using this method you can use two seperate images one to show the smaller resolution and the magnified version seperately (meaning you only load the magnified version on request saving bandwidth). */
  
 ;(function($) {
-	
-	$(document).ready(function(){
-		
-		
-		
-	});
     /**
      * 1, The thumbnail size is the same as the parent container size
      * 2, Parent container href attribute is the HD image path
@@ -22,14 +16,9 @@ for this version I will assume all hires versions are the same size, if not then
         /**
          * Default parameter
          */
- 
-		  
-		 
         var defaultParas = {
             layerW: 100, // Mask width (overlay)
             layerH: 100, // Mask height (overlay)
-            layerOpacity: 0.2, // Mask transparency (overlay)
-            layerBgc: '#000', // Mask background color (overlay)
         };
 
         paras = $.extend({}, defaultParas, paras);
@@ -60,12 +49,8 @@ for this version I will assume all hires versions are the same size, if not then
                 position: 'absolute',
                 left: '0',
                 top: '0',
-                backgroundColor: paras.layerBgc,
                 width: paras.layerW,
                 height: paras.layerH,
-                opacity: paras.layerOpacity,
-                border: '1px solid #ccc',
-                cursor: 'crosshair'
             });
 
             // Magnified area
@@ -118,10 +103,10 @@ for this version I will assume all hires versions are the same size, if not then
                     top: -y * magPosYscale
                 });
             }).on('mouseenter', function() {
-                layer.show();
+                $('.img-zoom-cover').show();
                 showPanel.show();
             }).on('mouseleave', function() {
-                layer.hide();
+                $('.img-zoom-cover').hide();
                 showPanel.hide();
             });
         });
