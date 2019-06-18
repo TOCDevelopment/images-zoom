@@ -3,24 +3,30 @@
 <head>
   <meta charset="UTF-8"/>
   <title></title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> <!-- Bopotstrap 3.4.1 CDN -->
   <link rel="stylesheet" href="css/main.css">
+  
 </head>
 <body>
-  <div class="show" href="images/IMG_0001.jpg">
+<div class="container">
+<div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
+  <div class="show" href="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg">
     <img src="images/IMG_0001.jpg" id="show-img">
   </div>
   <div class="small-img">
-    <img src="images/online_icon_right@2x.png" class="icon-left" alt="" id="prev-img">
+    <img src="images/img-zoom-svg/chevron-left-regular.svg" class="icon-left" alt="" id="prev-img">
     <div class="small-container">
       <div id="small-img-roll">
-        <img src="images/IMG_0001.jpg" class="show-small-img" alt="">
-        <img src="images/IMG_0002.jpg" class="show-small-img" alt="">
-        <img src="images/IMG_0003.jpg" class="show-small-img" alt="">
-        <img src="images/IMG_0004.jpg" class="show-small-img" alt="">
+        <img src="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg" class="show-small-img" alt="">
+        <img src="images/IMG_0002.jpg" data-hres="images/hres/IMG_0002.jpg" class="show-small-img" alt="">
+        <img src="images/IMG_0003.jpg" data-hres="images/hres/IMG_0003.jpg" class="show-small-img" alt="">
+        <img src="images/IMG_0004.jpg" data-hres="images/hres/IMG_0004.jpg" class="show-small-img" alt="">
       </div>
     </div>
-    <img src="images/online_icon_right@2x.png" class="icon-right" alt="" id="next-img">
+    <img src="images/img-zoom-svg/chevron-right-regular.svg" class="icon-right" alt="" id="next-img">
   </div>
+</div>
+</div>
   <script src="scripts/jquery.min.js"></script>
   <script src="scripts/zoom-image.js"></script>
   <script src="scripts/main.js"></script>

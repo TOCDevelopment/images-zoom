@@ -1,7 +1,19 @@
 /**
- * by MonsterDuang
+ * Original by MonsterDuang
+ * Edited and updated by IDEDOnline
  */
+/* Original script did not handle dynamic resizing so didnt work with things like bootstrap, so rewrote almost the entire script to work with resolution changes and dynamic rescaling of image sizes. */
+/* Main consideration is that we need to know the large image size prior to script working and then at point of mouse over we need to know the size of the image within the viewport to makes it work with scale,
+for this version I will assume all hires versions are the same size, if not then you could rewrite the method it pulls the data attribute to get it from the image along side the location of the high res url. */
+/* Using this method you can use two seperate images one to show the smaller resolution and the magnified version seperately (meaning you only load the magnified version on request saving bandwidth). */
+ 
 ;(function($) {
+	
+	$(document).ready(function(){
+		
+		
+		
+	});
     /**
      * 1, The thumbnail size is the same as the parent container size
      * 2, Parent container href attribute is the HD image path
@@ -10,15 +22,14 @@
         /**
          * Default parameter
          */
+ 
+		  
+		 
         var defaultParas = {
             layerW: 100, // Mask width (overlay)
             layerH: 100, // Mask height (overlay)
             layerOpacity: 0.2, // Mask transparency (overlay)
             layerBgc: '#000', // Mask background color (overlay)
-            showPanelW: 500, // Display magnified area width (magnifaction display area)
-            showPanelH: 500, // Display zoom area high (magnifaction display area)
-            marginL: 5, // Magnification area from the right side of the thumbnail
-            marginT: 0 // Zoom in area from the top side of the thumbnail
         };
 
         paras = $.extend({}, defaultParas, paras);
@@ -26,26 +37,21 @@
         $(this).each(function() {
             var self = $(this).css({position: 'relative'});
             var selfOffset = self.offset();
-            var imageW = self.width(); // Picture height
-            var imageH = self.height();
+            var lrgWidth = $('.img-zoom-container').data("lrgwidth")
+			var lrgHeight = $('.img-zoom-container').data("lrgheight")
 
             self.find('img').css({
                 width: '100%',
                 height: '100%'
             });
 
-            // Wide magnification
-            var wTimes = paras.showPanelW / paras.layerW;
-            // High magnification
-            var hTimes = paras.showPanelH / paras.layerH;
-
             // Zoom in picture
-            var img = $('<img>').attr('src', self.attr("href")).css({
+            var img = $('<img>').attr('src', self.data("hres")).css({
                 position: 'absolute',
                 left: '0',
                 top: '0',
-                width: imageW * wTimes,
-                height: imageH * hTimes
+                width: lrgWidth,
+                height: lrgHeight
             }).attr('id', 'big-img');
 
             // Mask
@@ -67,31 +73,37 @@
                 display: 'none',
                 position: 'absolute',
                 overflow: 'hidden',
-                left: imageW + paras.marginL,
-                top: paras.marginT,
-                width: paras.showPanelW,
-                height: paras.showPanelH
+                left: 0,
+                top: selfOffset.top,
+                width: $('.img-zoom-container .show').width(),
+                height: $('.img-zoom-container .show').height()
             }).append(img);
 
             self.append(layer).append(showPanel);
 
             self.on('mousemove', function(e) {
+				//Get sizes incase of resize
+				var crntWidth = $('.img-zoom-container .show').width()
+				var crntHeight = $('.img-zoom-container .show').height()
+				var magPosXscale = lrgWidth / crntWidth
+				var magPosYscale = lrgHeight / crntHeight	
+				
                 // The coordinates of the mouse relative to the thumbnail container
                 var x = e.pageX - selfOffset.left;
                 var y = e.pageY - selfOffset.top;
 
                 if(x <= paras.layerW / 2) {
                     x = 0;
-                }else if(x >= imageW - paras.layerW / 2) {
-                    x = imageW - paras.layerW;
+                }else if(x >= lrgWidth - paras.layerW / 2) {
+                    x = lrgWidth - paras.layerW;
                 }else {
                     x = x - paras.layerW / 2;
                 }
 
                 if(y < paras.layerH / 2) {
                     y = 0;
-                } else if(y >= imageH - paras.layerH / 2) {
-                    y = imageH - paras.layerH;
+                } else if(y >= lrgHeight - paras.layerH / 2) {
+                    y = lrgHeight - paras.layerH;
                 } else {
                     y = y - paras.layerH / 2;
                 }
@@ -102,8 +114,8 @@
                 });
 
                 img.css({
-                    left: -x * wTimes,
-                    top: -y * hTimes
+                    left: -x * magPosXscale,
+                    top: -y * magPosYscale
                 });
             }).on('mouseenter', function() {
                 layer.show();
