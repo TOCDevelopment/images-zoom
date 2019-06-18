@@ -9,7 +9,6 @@
 .show{
 	width: 100%;
 	height: auto;
-	
 }
 .small-img{
 	width: 90%;
@@ -18,6 +17,10 @@
 	margin:0;
 	position: relative;
 	left: 25px;
+}
+.img-zoom-selected{
+	border: solid 1px #951b25;
+	padding: 2px;
 }
 .small-img .icon-left, .small-img .icon-right{
 	width: 12px;
