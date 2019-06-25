@@ -1,6 +1,6 @@
 $('#next-img').click(function (){
 	// Click '>' Next
-	changeImage($('#show-img').attr('src'),$(".show-small-img[alt='now']").next().attr('src'))
+	changeImage($('#show-img').attr('src'),$(".show-small-img[alt='now']").next().attr('src'),$(".show-small-img[alt='now']").next().data("hres"))
 	$(".show-small-img[alt='now']").next().addClass('img-zoom-selected').siblings().removeClass('img-zoom-selected')
 	$(".show-small-img[alt='now']").next().attr('alt', 'now').siblings().removeAttr('alt')
 	repositionThumb();
@@ -8,15 +8,15 @@ $('#next-img').click(function (){
 
 $('#prev-img').click(function (){
 	// Click '<' Previous
-	changeImage($('#show-img').attr('src'),$(".show-small-img[alt='now']").prev().attr('src'))
+	changeImage($('#show-img').attr('src'),$(".show-small-img[alt='now']").prev().attr('src'),$(".show-small-img[alt='now']").prev().data("hres"))
 	$(".show-small-img[alt='now']").prev().addClass('img-zoom-selected').siblings().removeClass('img-zoom-selected')
 	$(".show-small-img[alt='now']").prev().attr('alt', 'now').siblings().removeAttr('alt')
 	repositionThumb();
 })
-function changeImage(currentImage,newImage){
+function changeImage(currentImage,newImage,newImageHiRes){
 	//Crossfade images to make the change easier on the eye
 	$('#show-img').attr('src',newImage)
-	$('#big-img').attr('src',newImage)
+	$('#big-img').attr('src',newImageHiRes)
 	$('#show-img-crossfade').attr('src',currentImage).css('display','block').fadeOut( "slow")
 	$('#img-zoom-mobileViewImg').attr('src', newImage)
 }
@@ -49,7 +49,7 @@ $(document).ready(function(){
 	$('#small-img-roll').css('left',((thumbcontainer/2)-(thumbwidth/2))+'px') //center the thumbnails as soon as document is ready and all classes applied
 	$('.show-small-img').click(function () {
 		//add click handler for thumbnails
-		changeImage($('#show-img').attr('src'),$(this).attr('src'))
+		changeImage($('#show-img').attr('src'),$(this).attr('src'),$(this).data("hres"))
 	  $(this).attr('alt', 'now').siblings().removeAttr('alt')
 	  $(this).addClass('img-zoom-selected').siblings().removeClass('img-zoom-selected')
 	  repositionThumb();

@@ -8,7 +8,7 @@ You need to include jQuery and Bootstrap 3+ in your html to make this function
 
 Include the following scripts.
 <script src="scripts/zoom-image.js"></script>
-<script src="scripts/main.js"></script>
+<script src="scripts/zoom-image-main.js"></script>
 
 Include the following css file, edit this to fit your sites styles.
 <link rel="stylesheet" href="css/main.css">
