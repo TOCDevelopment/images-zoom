@@ -62,5 +62,7 @@ $(document).ready(function(){
 		var selectedThumbWidth = parseInt($('.img-zoom-selected').css('width'))
 		var thumbWidth = parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))
 		$('#small-img-roll').css('left',((thumbContainer/2)-((thumbWidth*csThumb)+(selectedThumbWidth/2)))+'px')
+		$('.show').unbind('.zoomImage') //unbind zoom to prevent issues
+		$('.show').zoomImage() //rebind function
 	}, false);
 })
