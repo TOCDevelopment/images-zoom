@@ -15,7 +15,7 @@ Include the following css file, edit this to fit your sites styles.
 
 Inset the following html into your page within the container you want the zoom carousel to appear.
 
-[code]
+```
 //Copy after here
 <div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
   <div class="show">
@@ -46,7 +46,7 @@ Inset the following html into your page within the container you want the zoom c
 	<a style="font-size: 3em;" onclick="mobileZoomClose();" id="img-zoom-mobileViewerClose">Close</a>
 </div>
 //End of copy here
-[/code]
+```
 
 You will need to alter the follwoing lines in the html to fit your configuration:
 <div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
@@ -55,13 +55,23 @@ data-lrgwidth="4250" - should be the width of the zoomed image this will be used
 data-lrgheight="1560" - should be the height of the zoomed image this will be used to calculate the images position in accordance with mouse location.
 
 Then within the small-img-roll element you need to add your thumbnails in the following format 
+```
 <div id="small-img-roll">
 	<img src="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg" class="show-small-img" alt="">
 	<img src="images/IMG_0002.jpg" data-hres="images/hres/IMG_0002.jpg" class="show-small-img" alt="">
 	<img src="images/IMG_0003.jpg" data-hres="images/hres/IMG_0003.jpg" class="show-small-img" alt="">
 	<img src="images/IMG_0004.jpg" data-hres="images/hres/IMG_0004.jpg" class="show-small-img" alt="">
 </div>
+```
 Note the data-hres attribute this will need to be set for each thumbnail to point to the zoom version and these should all be uniform with the previously
 set dimensions you can have one or more thumbnails the system should be able to support any amount.
 
 That's it your done open your page in a web browser on mobile or desktop device to see the differences but this should work and be nice and ui friendly in either.
+
+
+- [x] Change code to be compatible with Bootstrap 3.
+- [x] Change code to use multiple image files for normal view and larger image for magnified version.
+- [x] Add handling for responsive design
+- [x] Add mobile view to replace limited viewing box on mobile devices
+- [x] Make thumbnail handling more dynamic to auto support more or less images (allow feed for db list)
+- [ ] Fix issue with responsive design creating browser lag when window resized manually (fix for unbind-rebind method currently implimented to handle new scaling)
