@@ -48,7 +48,7 @@ Inset the following html into your page within the container you want the zoom c
 //End of copy here
 ```
 
-You will need to alter the follwoing lines in the html to fit your configuration:
+You will need to alter the following lines in the html to fit your configuration:
 <div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
 
 data-lrgwidth="4250" - should be the width of the zoomed image this will be used to calculate the images position in accordance with mouse location.
@@ -68,10 +68,14 @@ set dimensions you can have one or more thumbnails the system should be able to 
 
 That's it your done open your page in a web browser on mobile or desktop device to see the differences but this should work and be nice and ui friendly in either.
 
-
+#### To-do list
 - [x] Change code to be compatible with Bootstrap 3.
-- [x] Change code to use multiple image files for normal view and larger image for magnified version.
-- [x] Add handling for responsive design
-- [x] Add mobile view to replace limited viewing box on mobile devices
-- [x] Make thumbnail handling more dynamic to auto support more or less images (allow feed for db list)
-- [ ] Fix issue with responsive design creating browser lag when window resized manually (fix for unbind-rebind method currently implimented to handle new scaling)
+- [x] Change code to use multiple image files (one for normal view and one for magnified version).
+- [x] Add handling for responsive design.
+- [x] Add mobile view to replace limited viewing box on mobile devices.
+- [x] Make thumbnail handling more dynamic to auto support more or less images (allow feed for db list).
+- [x] Make thumbnail handling more dynamic support thumbnail sizes in a non-hardcoded manner (multiple image of same size but don’t require a new js build for each page featuring slider if it has a set of image different from other pages).
+- [x] Separate out styling from code to allow restyling without require for rebuild of script.
+- [ ] Fix issue with responsive design creating browser lag when window resized manually (fix for unbind-rebind method currently implemented to handle new scaling).
+- [ ] Fix issue with image scale calculation and mouse position (magnified layer doesn’t match exact position of normal layer during magnification).
+- [ ] Investigate and fix issue in Safari meaning magnified layer is not displayed correctly (height reduced to small line).
