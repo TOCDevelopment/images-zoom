@@ -15,10 +15,11 @@ $('#prev-img').click(function (){
 })
 function changeImage(currentImage,newImage,newImageHiRes){
 	//Crossfade images to make the change easier on the eye
+	$('#show-img-crossfade').attr('src',currentImage).css('display','block')
 	$('#show-img').attr('src',newImage)
 	$('#big-img').attr('src',newImageHiRes)
-	$('#show-img-crossfade').attr('src',currentImage).css('display','block').fadeOut( "slow")
 	$('#img-zoom-mobileViewImg').attr('src', newImage)
+	$('#show-img-crossfade').fadeOut( "slow")
 }
 function repositionThumb(){
 	//thumbnail selection animation and positioning
