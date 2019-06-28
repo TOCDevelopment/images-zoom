@@ -11,16 +11,16 @@ Include the following scripts.
 <script src="scripts/zoom-image-main.js"></script>
 
 Include the following css file, edit this to fit your sites styles.
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/image-zoom-main.css">
 
 Inset the following html into your page within the container you want the zoom carousel to appear.
 
 [code]
 //Copy after here
 <div class="img-zoom-container col-xs-12" data-lrgwidth="4250" data-lrgheight="1560" >
-  <div class="show" href="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg">
-	<img src="images/IMG_0001.jpg" id="show-img-crossfade" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;">
-    <img src="images/IMG_0001.jpg" id="show-img">
+  <div class="show">
+	<img id="show-img-crossfade" style="display:none;position:absolute;top:0;left:0;right:0;bottom:0;">
+    <img id="show-img">
 	<div class="img-zoom-cover"></div>
 	<a class="visible-xs visible-sm" id="img-zoom-mobileView" onclick="mobileZoom();" style="position:absolute;top:0;bottom:0;left:0;right:0;z-index:10;"></a>
   </div>
@@ -41,7 +41,7 @@ Inset the following html into your page within the container you want the zoom c
 <div id="img-zoom-mobileViewer">
 	<p style="font-size: 3em;height:5vh;">Press and drag to move</p>
 	<div class="img-zoom-mobileViewContainer">
-		<img id="img-zoom-mobileViewImg" src="images/hres/IMG_0001.jpg"/>
+		<img id="img-zoom-mobileViewImg"/>
 	</div>
 	<a style="font-size: 3em;" onclick="mobileZoomClose();" id="img-zoom-mobileViewerClose">Close</a>
 </div>
@@ -53,11 +53,6 @@ You will need to alter the follwoing lines in the html to fit your configuration
 
 data-lrgwidth="4250" - should be the width of the zoomed image this will be used to calculate the images position in accordance with mouse location.
 data-lrgheight="1560" - should be the height of the zoomed image this will be used to calculate the images position in accordance with mouse location.
-
-Next you will need to change the image urls of the following two elements to be the first image in your carousel
-<div class="show" href="images/IMG_0001.jpg" data-hres="images/hres/IMG_0001.jpg">
-<img src="images/IMG_0001.jpg" id="show-img">
-The data-hres should be the url of the zoomed in version of your image or the hi resolution version.
 
 Then within the small-img-roll element you need to add your thumbnails in the following format 
 <div id="small-img-roll">

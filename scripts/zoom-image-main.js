@@ -40,13 +40,17 @@ function mobileZoomClose(){
 }
 
 $(document).ready(function(){
-	$('.show').zoomImage(); //link zoom function
+	$('#show-img').attr('src',$('.show-small-img:first-of-type').attr('src'))
+	var hresfirst = $('.show-small-img:first-of-type').data('hres')
+	$('#img-zoom-mobileViewImg').attr('src',hresfirst)
 	$('.show-small-img:first-of-type').addClass('img-zoom-selected') //add selected to the first thumbnail
 	$('.show-small-img:first-of-type').attr('alt', 'now').siblings().removeAttr('alt')
 	$('#small-img-roll').css('width',(parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))+parseInt($('.show-small-img:not(.img-zoom-selected)').css('margin-right'))) * $('#small-img-roll').children().length + 'px') //set width of thumbnail holder to total width of all images plus margin.
 	var thumbwidth = parseInt($('.img-zoom-selected').css('width'))
 	var thumbcontainer = parseInt($('.small-container').css('width'))
 	$('#small-img-roll').css('left',((thumbcontainer/2)-(thumbwidth/2))+'px') //center the thumbnails as soon as document is ready and all classes applied
+	$('.show').zoomImage(); //link zoom function
+	$('#big-img').attr('src',hresfirst)
 	$('.show-small-img').click(function () {
 		//add click handler for thumbnails
 		changeImage($('#show-img').attr('src'),$(this).attr('src'),$(this).data("hres"))
