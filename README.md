@@ -3,6 +3,9 @@ Original by MonsterDuang
 Updated and edited by IDEDOnline for SureSpecs
 (There is almost none of the original left in my version so to upgrade please completely remove the original script and html, then install this one)
 
+### Demo
+https://tocdevelopment.github.io/images-zoom/
+
 #### Instructions
 You need to include jQuery and Bootstrap 3+ in your html to make this function
 
