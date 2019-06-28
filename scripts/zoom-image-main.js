@@ -43,9 +43,9 @@ $(document).ready(function(){
 	$('#show-img').attr('src',$('.show-small-img:first-of-type').attr('src'))
 	var hresfirst = $('.show-small-img:first-of-type').data('hres')
 	$('#img-zoom-mobileViewImg').attr('src',hresfirst)
+	$('#small-img-roll').css('width',(parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))+parseInt($('.show-small-img:not(.img-zoom-selected)').css('margin-right'))) * $('#small-img-roll').children().length + 'px') //set width of thumbnail holder to total width of all images plus margin.
 	$('.show-small-img:first-of-type').addClass('img-zoom-selected') //add selected to the first thumbnail
 	$('.show-small-img:first-of-type').attr('alt', 'now').siblings().removeAttr('alt')
-	$('#small-img-roll').css('width',(parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))+parseInt($('.show-small-img:not(.img-zoom-selected)').css('margin-right'))) * $('#small-img-roll').children().length + 'px') //set width of thumbnail holder to total width of all images plus margin.
 	var thumbwidth = parseInt($('.img-zoom-selected').css('width'))
 	var thumbcontainer = parseInt($('.small-container').css('width'))
 	$('#small-img-roll').css('left',((thumbcontainer/2)-(thumbwidth/2))+'px') //center the thumbnails as soon as document is ready and all classes applied
@@ -67,6 +67,8 @@ $(document).ready(function(){
 		var thumbWidth = parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))
 		$('#small-img-roll').css('left',((thumbContainer/2)-((thumbWidth*csThumb)+(selectedThumbWidth/2)))+'px')
 		$('.show').unbind('.zoomImage') //unbind zoom to prevent issues
+		$('.zoom-img-mask').remove()
+		$('.zoom-img-magnifier').remove()
 		$('.show').zoomImage() //rebind function
 	}, false);
 })

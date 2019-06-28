@@ -35,7 +35,7 @@ for this version I will assume all hires versions are the same size, if not then
             });
 
             // Zoom in picture
-            var img = $('<img>').attr('src', self.data("hres")).css({
+            var img = $('<img>').attr('src', $('.img-zoom-selected').data("hres")).css({
                 position: 'absolute',
                 left: '0',
                 top: '0',
@@ -44,7 +44,7 @@ for this version I will assume all hires versions are the same size, if not then
             }).attr('id', 'big-img');
 
             // Mask
-            var layer = $('<div>').css({
+            var layer = $('<div>').attr('class','zoom-img-mask').css({
                 display: 'none',
                 position: 'absolute',
                 left: '0',
@@ -54,12 +54,12 @@ for this version I will assume all hires versions are the same size, if not then
             });
 
             // Magnified area
-            var showPanel = $('<div>').css({
+            var showPanel = $('<div>').attr('class','zoom-img-magnifier').css({
                 display: 'none',
                 position: 'absolute',
                 overflow: 'hidden',
                 left: 0,
-                top: selfOffset.top,
+                top: 0,
                 width: $('.img-zoom-container .show').width(),
                 height: $('.img-zoom-container .show').height()
             }).append(img);
