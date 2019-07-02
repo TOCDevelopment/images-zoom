@@ -45,19 +45,25 @@ $(document).ready(function(){
 	var hresfirst = $('.show-small-img:first-of-type').data('hres')
 	$('#img-zoom-mobileViewImg').attr('src',hresfirst)
 	$('#small-img-roll').css('width',(parseInt($('.show-small-img:not(.img-zoom-selected)').css('width'))+parseInt($('.show-small-img:not(.img-zoom-selected)').css('margin-right'))) * $('#small-img-roll').children().length + 'px') //set width of thumbnail holder to total width of all images plus margin.
-	$('.show-small-img:first-of-type').addClass('img-zoom-selected') //add selected to the first thumbnail
-	$('.show-small-img:first-of-type').attr('alt', 'now').siblings().removeAttr('alt')
-	var thumbwidth = parseInt($('.img-zoom-selected').css('width'))
-	var thumbcontainer = parseInt($('.small-container').css('width'))
-	$('#small-img-roll').css('left',((thumbcontainer/2)-(thumbwidth/2))+'px') //center the thumbnails as soon as document is ready and all classes applied
-	$('.show').zoomImage(); //link zoom function
-	$('#big-img').attr('src',hresfirst)
-	$('.show-small-img').click(function () {
-		//add click handler for thumbnails
-		changeImage($('#show-img').attr('src'),$(this).attr('src'),$(this).data("hres"))
-	  $(this).attr('alt', 'now').siblings().removeAttr('alt')
-	  $(this).addClass('img-zoom-selected').siblings().removeClass('img-zoom-selected')
-	  repositionThumb();
+	var firstRunCheck = false
+	$('#show-img').load(function(){
+		if (firstRunCheck == false){
+			firstRunCheck = true
+			$('.show-small-img:first-of-type').addClass('img-zoom-selected') //add selected to the first thumbnail
+			$('.show-small-img:first-of-type').attr('alt', 'now').siblings().removeAttr('alt')
+			var thumbwidth = parseInt($('.img-zoom-selected').css('width'))
+			var thumbcontainer = parseInt($('.small-container').css('width'))
+			$('#small-img-roll').css('left',((thumbcontainer/2)-(thumbwidth/2))+'px') //center the thumbnails as soon as document is ready and all classes applied
+			$('.show').zoomImage(); //link zoom function
+			$('#big-img').attr('src',hresfirst)
+			$('.show-small-img').click(function () {
+			//add click handler for thumbnails
+				changeImage($('#show-img').attr('src'),$(this).attr('src'),$(this).data("hres"))
+				$(this).attr('alt', 'now').siblings().removeAttr('alt')
+				$(this).addClass('img-zoom-selected').siblings().removeClass('img-zoom-selected')
+				repositionThumb();
+			})	
+		}
 	})
 	
 	window.addEventListener('resize', function () {
